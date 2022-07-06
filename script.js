@@ -17,6 +17,13 @@ timeLeft.innerText = counter
 //   1000
 // )
 
+function startTimer() {
+  clock = setInterval(() => {
+    counter--
+    timeLeft.innerText = counter
+  }, 1000)
+}
+
 function breakIncrement(event) {
   switch (event.target.id) {
     case 'break-increment':
@@ -44,7 +51,8 @@ function breakIncrement(event) {
   timeLeft.innerText = counter
 }
 function toggleTimer() {
-  alert('toggle timer')
+  running ? clearInterval(clock) : startTimer()
+  running = !running
 }
 function handleReset() {
   counter = 1500
