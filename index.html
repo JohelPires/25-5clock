@@ -47,20 +47,19 @@
                     </h4>
                     <div class='each-setting'>
                       <h3>
-                        <BsFillCaretUpFill
+                        <button
                           class='btn'
-                          onClick={breakIncrement}
-                          id='break-increment'
-                        />
+                          onClick='breakIncrement()'
+                          id='break-increment'>+</button>
                       </h3>
           
                       <h2 id='break-length'>5</h2>
                       <h3>
-                        <BsFillCaretDownFill
+                        <button
                           class='btn'
-                          onClick={breakDecrement}
+                          onClick='breakIncrement()'
                           id='break-decrement'
-                        />
+                          >-</button>
                       </h3>
                     </div>
                   </div>
@@ -71,21 +70,21 @@
                     </h4>
                     <div class='each-setting'>
                       <h3>
-                        <BsFillCaretUpFill
+                        <button
                           id='session-increment'
                           class='btn'
-                          onClick={sessionIncrement}
-                        />
+                          onClick='breakIncrement()'
+                          >+</button>
                       </h3>
                       <h2 class='length' id='session-length'>
                         25
                       </h2>
                       <h3>
-                        <BsFillCaretDownFill
+                        <button
                           id='session-decrement'
                           class='btn'
-                          onClick={sessionDecrement}
-                        />
+                          onClick='breakIncrement()'
+                          >-</button>
                       </h3>
                     </div>
                   </div>
@@ -95,6 +94,7 @@
       </div>
 
 <script src="script.js"></script>
+<script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
 
 
   </body>
