@@ -28,33 +28,50 @@ function breakIncrement(event) {
   switch (event.target.id) {
     case 'break-increment':
       breakLengthValue < 60 && breakLengthValue++
-      breakLength.innerText = breakLengthValue
+      if (!running) {
+        breakLength.innerText = breakLengthValue
+      }
       break
     case 'break-decrement':
       breakLengthValue > 1 && breakLengthValue--
-      breakLength.innerText = breakLengthValue
+      if (!running) {
+        breakLength.innerText = breakLengthValue
+      }
       break
     case 'session-increment':
-      !running && sessionLengthValue < 60 && sessionLengthValue++
-      sessionLength.innerText = sessionLengthValue
+      if (!running) {
+        sessionLengthValue < 60 && sessionLengthValue++
+        sessionLength.innerText = sessionLengthValue
+        counter = sessionLengthValue * 60
+        timeLeft.innerText = counter
+      }
 
       break
     case 'session-decrement':
-      !running && sessionLengthValue > 1 && sessionLengthValue--
-      sessionLength.innerText = sessionLengthValue
+      if (!running) {
+        sessionLengthValue > 1 && sessionLengthValue--
+        sessionLength.innerText = sessionLengthValue
+        counter = sessionLengthValue * 60
+        timeLeft.innerText = counter
+      }
       break
 
     default:
       break
   }
-  counter = sessionLengthValue * 60
-  timeLeft.innerText = counter
 }
 function toggleTimer() {
-  running ? clearInterval(clock) : startTimer()
-  running = !running
+  if (running) {
+    clearInterval(clock)
+    running = false
+  } else {
+    startTimer()
+    running = true
+  }
 }
 function handleReset() {
+  clearInterval(clock)
+  running = false
   counter = 1500
   sessionLengthValue = 25
   sessionLength.innerText = sessionLengthValue
