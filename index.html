@@ -30,11 +30,11 @@
                 
           
                 <div class='settings-container play-pause-btns'>
-                  <h2 onClick={toggleTimer} class='btn' id='start_stop'>
-                    {playPause ? <BsPauseFill /> : <BsPlayFill />}
+                  <h2 onClick='toggleTimer()' class='btn' id='start_stop'>
+                    Play/Pause
                   </h2>
-                  <h2 onClick={handleReset} class='btn' id='reset'>
-                    <BsArrowCounterclockwise />
+                  <h2 onClick='handleReset()'' class='btn' id='reset'>
+                    Reset
                   </h2>
                 </div>
               </div>
@@ -49,7 +49,7 @@
                       <h3>
                         <button
                           class='btn'
-                          onClick='breakIncrement()'
+                          onClick='breakIncrement(event)'
                           id='break-increment'>+</button>
                       </h3>
           
@@ -57,7 +57,7 @@
                       <h3>
                         <button
                           class='btn'
-                          onClick='breakIncrement()'
+                          onClick='breakIncrement(event)'
                           id='break-decrement'
                           >-</button>
                       </h3>
@@ -73,7 +73,7 @@
                         <button
                           id='session-increment'
                           class='btn'
-                          onClick='breakIncrement()'
+                          onClick='breakIncrement(event)'
                           >+</button>
                       </h3>
                       <h2 class='length' id='session-length'>
@@ -83,7 +83,7 @@
                         <button
                           id='session-decrement'
                           class='btn'
-                          onClick='breakIncrement()'
+                          onClick='breakIncrement(event)'
                           >-</button>
                       </h3>
                     </div>
