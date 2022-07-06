@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>25-5 Clock</title>
+  </head>
+  <body>
+
+    <div class='App'>
+        <div class='header'>
+            <h1>Hiperfoco</h1>
+            <h3>pomodoro timer</h3>
+          </div>
+        <main>
+            <div class='theclock'>
+                <h2 class='title' id='timer-label'>
+                  Session
+                </h2>
+                <h1 id='time-left'>
+                  25:00
+                </h1>
+          
+                
+                  <audio id='beep' autoPlay>
+                    <source src={sound} type='audio/mpeg'></source>
+                  </audio>
+                
+          
+                <div class='settings-container play-pause-btns'>
+                  <h2 onClick={toggleTimer} class='btn' id='start_stop'>
+                    {playPause ? <BsPauseFill /> : <BsPlayFill />}
+                  </h2>
+                  <h2 onClick={handleReset} class='btn' id='reset'>
+                    <BsArrowCounterclockwise />
+                  </h2>
+                </div>
+              </div>
+              <div class='settings theclock'>
+                <h2 class='title'>Settings</h2>
+                <div class='settings-container'>
+                  <div>
+                    <h4 class='label' id='break-label'>
+                      Break length
+                    </h4>
+                    <div class='each-setting'>
+                      <h3>
+                        <BsFillCaretUpFill
+                          class='btn'
+                          onClick={breakIncrement}
+                          id='break-increment'
+                        />
+                      </h3>
+          
+                      <h2 id='break-length'>5</h2>
+                      <h3>
+                        <BsFillCaretDownFill
+                          class='btn'
+                          onClick={breakDecrement}
+                          id='break-decrement'
+                        />
+                      </h3>
+                    </div>
+                  </div>
+          
+                  <div>
+                    <h4 class='label' id='session-label'>
+                      Session length
+                    </h4>
+                    <div class='each-setting'>
+                      <h3>
+                        <BsFillCaretUpFill
+                          id='session-increment'
+                          class='btn'
+                          onClick={sessionIncrement}
+                        />
+                      </h3>
+                      <h2 class='length' id='session-length'>
+                        25
+                      </h2>
+                      <h3>
+                        <BsFillCaretDownFill
+                          id='session-decrement'
+                          class='btn'
+                          onClick={sessionDecrement}
+                        />
+                      </h3>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        </main>
+      </div>
+
+<script src="script.js"></script>
+
+
+  </body>
+</html>
