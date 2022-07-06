@@ -5,10 +5,12 @@ let running = false
 let timerLabelValue = 'Session'
 let clock
 
+const beep = document.getElementById('beep')
 const timerLabel = document.getElementById('timer-label')
 const breakLength = document.getElementById('break-length')
 const sessionLength = document.getElementById('session-length')
 const timeLeft = document.getElementById('time-left')
+const startstop_icon = document.getElementById('start_stop')
 timeLeft.innerText = format(counter)
 timerLabel.innerText = timerLabelValue
 
@@ -42,10 +44,12 @@ function startTimer() {
       counter = breakLengthValue * 60
       timerLabelValue = 'Break'
       timerLabel.innerText = timerLabelValue
+      beep.play()
     } else if (counter < 0 && timerLabelValue === 'Break') {
       counter = sessionLengthValue * 60
       timerLabelValue = 'Session'
       timerLabel.innerText = timerLabelValue
+      beep.play()
     }
     timeLeft.innerText = format(counter)
   }, 1000)
@@ -91,12 +95,15 @@ function toggleTimer() {
   if (running) {
     clearInterval(clock)
     running = false
+    startstop_icon.innerHTML = '<i class="fa-regular fa-circle-play"></i>'
   } else {
     startTimer()
     running = true
+    startstop_icon.innerHTML = '<i class="fa-regular fa-circle-pause"></i>'
   }
 }
 function handleReset() {
+  beep.load()
   clearInterval(clock)
   timerLabelValue = 'Session'
   timerLabel.innerText = timerLabelValue

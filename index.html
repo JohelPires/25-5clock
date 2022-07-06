@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="styles.css" />
     <title>25-5 Clock</title>
   </head>
@@ -25,16 +26,17 @@
           
                 
                   <audio id='beep' autoPlay>
-                    <source src={sound} type='audio/mpeg'></source>
+                    <source src='./bell-ringing-05.mp3' type='audio/mpeg'></source>
                   </audio>
                 
           
                 <div class='settings-container play-pause-btns'>
                   <h2 onClick='toggleTimer()' class='btn' id='start_stop'>
-                    Play/Pause
+                    <i class="fa-regular fa-circle-play"></i>
+
                   </h2>
                   <h2 onClick='handleReset()'' class='btn' id='reset'>
-                    Reset
+                    <i class="fa-solid fa-arrow-rotate-left"></i>
                   </h2>
                 </div>
               </div>
@@ -46,21 +48,20 @@
                       Break length
                     </h4>
                     <div class='each-setting'>
-                      <h3>
-                        <button
-                          class='btn'
-                          onClick='breakIncrement(event)'
-                          id='break-increment'>+</button>
-                      </h3>
-          
-                      <h2 id='break-length'>5</h2>
-                      <h3>
-                        <button
-                          class='btn'
-                          onClick='breakIncrement(event)'
-                          id='break-decrement'
-                          >-</button>
-                      </h3>
+                        
+                        <h3
+                            class='btn noselect'
+                            onClick='breakIncrement(event)'
+                            id='break-decrement'
+                            >-
+                        </h3>
+                        <h2 class="noselect" id='break-length'>5</h2>
+                        <h3
+                          
+                            class='btn noselect'
+                            onClick='breakIncrement(event)'
+                            id='break-increment'>+</i>
+                        </h3>
                     </div>
                   </div>
           
@@ -69,23 +70,27 @@
                       Session length
                     </h4>
                     <div class='each-setting'>
-                      <h3>
-                        <button
-                          id='session-increment'
-                          class='btn'
-                          onClick='breakIncrement(event)'
-                          >+</button>
-                      </h3>
-                      <h2 class='length' id='session-length'>
-                        25
-                      </h2>
-                      <h3>
-                        <button
-                          id='session-decrement'
-                          class='btn'
-                          onClick='breakIncrement(event)'
-                          >-</button>
-                      </h3>
+                        <h3
+                          
+                            id='session-decrement'
+                            class='btn noselect'
+                            onClick='breakIncrement(event)'
+                            >
+                           -
+                        
+                        </h3>
+                        <h2 class='length noselect' id='session-length'>
+                            25
+                        </h2>
+                        <h3
+                          
+                            id='session-increment'
+                            class='btn noselect'
+                            onClick='breakIncrement(event)'
+                            >
+                            +
+                          
+                        </h3>
                     </div>
                   </div>
                 </div>
@@ -94,7 +99,7 @@
       </div>
 
 <script src="script.js"></script>
-<script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+<!-- <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script> -->
 
 
   </body>
