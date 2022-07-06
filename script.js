@@ -2,11 +2,15 @@ let counter = 1500
 let breakLengthValue = 5
 let sessionLengthValue = 25
 let running = false
+let timerLabelValue = 'Session'
+let clock
 
+const timerLabel = document.getElementById('timer-label')
 const breakLength = document.getElementById('break-length')
 const sessionLength = document.getElementById('session-length')
 const timeLeft = document.getElementById('time-left')
-timeLeft.innerText = counter
+timeLeft.innerText = format(counter)
+timerLabel.innerText = timerLabelValue
 
 // const timer = setInterval(
 //   () =>
@@ -17,10 +21,33 @@ timeLeft.innerText = counter
 //   1000
 // )
 
+function format(segundos) {
+  let min = Math.floor(segundos / 60)
+  let sec = Math.floor(segundos % 60)
+  if (sec < 10) {
+    sec = '0' + sec
+  }
+  if (min < 10) {
+    min = '0' + min
+  }
+
+  const result = min + ':' + sec
+  return result
+}
+
 function startTimer() {
   clock = setInterval(() => {
     counter--
-    timeLeft.innerText = counter
+    if (counter < 0 && timerLabelValue === 'Session') {
+      counter = breakLengthValue * 60
+      timerLabelValue = 'Break'
+      timerLabel.innerText = timerLabelValue
+    } else if (counter < 0 && timerLabelValue === 'Break') {
+      counter = sessionLengthValue * 60
+      timerLabelValue = 'Session'
+      timerLabel.innerText = timerLabelValue
+    }
+    timeLeft.innerText = format(counter)
   }, 1000)
 }
 
@@ -43,7 +70,7 @@ function breakIncrement(event) {
         sessionLengthValue < 60 && sessionLengthValue++
         sessionLength.innerText = sessionLengthValue
         counter = sessionLengthValue * 60
-        timeLeft.innerText = counter
+        timeLeft.innerText = format(counter)
       }
 
       break
@@ -52,7 +79,7 @@ function breakIncrement(event) {
         sessionLengthValue > 1 && sessionLengthValue--
         sessionLength.innerText = sessionLengthValue
         counter = sessionLengthValue * 60
-        timeLeft.innerText = counter
+        timeLeft.innerText = format(counter)
       }
       break
 
@@ -71,11 +98,13 @@ function toggleTimer() {
 }
 function handleReset() {
   clearInterval(clock)
+  timerLabelValue = 'Session'
+  timerLabel.innerText = timerLabelValue
   running = false
   counter = 1500
   sessionLengthValue = 25
   sessionLength.innerText = sessionLengthValue
   breakLengthValue = 5
   breakLength.innerText = breakLengthValue
-  timeLeft.innerText = counter
+  timeLeft.innerText = format(counter)
 }
